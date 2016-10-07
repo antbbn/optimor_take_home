@@ -1,0 +1,11 @@
+* The page performs an ajax request to obtain the country list 
+  endpoint is /internationaltariffs/getallcountries
+  return a JSON with all the countries.
+
+* A contry selection/search corresponds to a ajax request to the endopoint
+  internationaltariffs/getintlcallcosts?countryId=<contryId>
+  where countryId is an attribute from the JSON.
+  It's a three letter code for the country.
+
+
+
