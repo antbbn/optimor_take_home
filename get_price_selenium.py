@@ -23,21 +23,8 @@ for country in countries_to_get:
   time.sleep(1)
   print country,
   for div_id in ["paymonthlyTariffPlan","payandgoTariffPlan"]:
-    div = browser.find_element_by_id(div_id)
-    price = div.find_element_by_xpath('//*[@id="standardRatesTable"]/tbody/tr[1]/td[2]')
+    #div = browser.find_element_by_id(div_id)
+    price = browser.find_element_by_xpath('//*[@id="{}"]//*[@id="standardRatesTable"]/tbody/tr[1]/td[2]'.format(div_id))
     print div_id, price.get_attribute('innerText')
   time.sleep(3)
-
-#for country_name, country_id in countries_ids_to_get.iteritems():
-#  soup = BeautifulSoup()
-#  print country_name,
-#  for div_id in ["paymonthlyTariffPlan","payandgoTariffPlan"]:
-#    div = soup.find(id=div_id)
-#    standard_rates_table = div.find(id='standardRatesTable')
-#    trs = standard_rates_table.find_all('tr')
-#    tds = trs[0].find_all('td')
-#    print div_id, float(tds[1].string[1:]),
-#  print
-#
-#
-#
+browser.quit()
