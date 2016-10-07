@@ -15,13 +15,13 @@ class O2GetPrice:
       self.sleep_after = sleep_after
 
   # This is the path to the selenium webdriver you want to use
-  #driver_path = "./selenium_drivers/chromedriver"
-  driver_path = "selenium_drivers/phantomjs-2.1.1-macosx/bin/phantomjs"
+  driver_path = "./selenium_drivers/chromedriver"
+  #driver_path = "selenium_drivers/phantomjs-2.1.1-macosx/bin/phantomjs"
   def start_browser(self, path=None):
     if path is not None:
       self.driver_path = path
-    #self.browser = webdriver.Chrome(executable_path = self.driver_path)
-    self.browser = webdriver.PhantomJS(executable_path = self.driver_path)
+    self.browser = webdriver.Chrome(executable_path = self.driver_path)
+    #self.browser = webdriver.PhantomJS(executable_path = self.driver_path)
     # This avoids a time.sleep after writing the country name
     # and waits for the paymonthly and paygo divs to become available
     self.browser.implicitly_wait(10)
