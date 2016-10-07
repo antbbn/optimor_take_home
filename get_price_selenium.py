@@ -15,11 +15,13 @@ class O2GetPrice:
       self.sleep_after = sleep_after
 
   # This is the path to the selenium webdriver you want to use
-  driver_path = "./selenium_drivers/chromedriver"
+  #driver_path = "./selenium_drivers/chromedriver"
+  driver_path = "selenium_drivers/phantomjs-2.1.1-macosx/bin/phantomjs"
   def start_browser(self, path=None):
     if path is not None:
       self.driver_path = path
-    self.browser = webdriver.Chrome(executable_path = self.driver_path)
+    #self.browser = webdriver.Chrome(executable_path = self.driver_path)
+    self.browser = webdriver.PhantomJS(executable_path = self.driver_path)
     # This avoids a time.sleep after writing the country name
     # and waits for the paymonthly and paygo divs to become available
     self.browser.implicitly_wait(10)
@@ -79,8 +81,10 @@ class O2GetPrice:
 
 
 if __name__ == "__main__":
-  countries_to_get = ["", "Canada", "Wakanda", "Germany", "Iceland", "Pakistan", "Singapore", "South Africa"]
+  countries_to_get = ["Canada", "Germany", "Iceland", "Pakistan", "Singapore", "South Africa"]
 
   with O2GetPrice() as o2:
+    print "Country, Pay Monthly, Pay & Go"
     for country in countries_to_get:
-      print country, o2.get_standard_prices(country)
+      prices = o2.get_standard_prices(country)
+      print "{},{},{}".format(country,prices[0],prices[1] )

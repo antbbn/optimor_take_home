@@ -1,0 +1,11 @@
+Scraper for the O2 international call prices.
+
+By default it answers the challenge and prints the 
+Standard Rate prices for the countries requested in the
+take home task.
+
+The first is the "Pay Monthly" rate, the second is the "Pay & Go" rate.
+
+It can also be used as a library for easier integration.
+
+Antonio Bibiano
