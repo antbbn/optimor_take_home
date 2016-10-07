@@ -7,5 +7,13 @@
   where countryId is an attribute from the JSON.
   It's a three letter code for the country.
 
+* Each request returns an HTML with two main type of tariff
+  "Pay Monthly" and "Pay & Go". Rates are different between the two.
+  Each type in itself has different kind of rates depending on 
+  Bolt On/Calling Cards/Other stuff but there is always a 
+  Standard Rates tab. 
+  The type tabs are identified by the id: paymonthlyTariffPlan and payandgoTariffPlan
+  The Standard Rates tab within each can be found via the id: standardRates
 
-
+* In ech Standard Rates tab there is a table (id: standardRatesTable) whose first <tr> is 
+  the cost af a call to a Landline
