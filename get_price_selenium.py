@@ -30,7 +30,7 @@ class O2GetPrice:
     return self
 
   def __exit__(self, exc_type, exc_value, traceback):
-    self.stop_browser
+    self.stop_browser()
 
   # accepts a country string and returns an array with two prices
   # the first one is the "Pay Monthly", the second one is the "Pay & Go"
@@ -40,6 +40,12 @@ class O2GetPrice:
       inputarea = self.browser.find_element_by_id('countryName')  
       inputarea.clear()
       inputarea.send_keys(country+'\n') # the '\n' ensures that a request is sent
+      # When we input a wrong country the class changes 
+      # we need to check this because we clearing the input area
+      # does not remove the previous search results and causes the function
+      # to return the old prices
+      if "error" in  inputarea.get_attribute("class"):
+      	raise Exception("Country not found")
     except Exception as e:
       # log the error
       sys.stderr.write("Input problems: {},{}".format(country, e))
@@ -65,7 +71,7 @@ class O2GetPrice:
 
 
 if __name__ == "__main__":
-  countries_to_get = ["Wakanda", "Canada", "Germany", "Iceland", "Pakistan", "Singapore", "South Africa"]
+  countries_to_get = ["Canada", "Wakanda", "Germany", "Iceland", "Pakistan", "Singapore", "South Africa"]
 
   with O2GetPrice() as o2:
     for country in countries_to_get:
