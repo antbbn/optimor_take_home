@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+
 from selenium import webdriver
 import sys
 import time
 
 class O2GetPrice:
+  # This is the main URL of the form
   url = "http://international.o2.co.uk/internationaltariffs/calling_abroad_from_uk"
   sleep_after = 3
   def __init__(self, url=None, sleep_after=None):
@@ -11,6 +14,7 @@ class O2GetPrice:
     if sleep_after is not None:
       self.sleep_after = sleep_after
 
+  # This is the path to the selenium webdriver you want to use
   driver_path = "./selenium_drivers/chromedriver"
   def start_browser(self, path=None):
     if path is not None:
@@ -71,7 +75,7 @@ class O2GetPrice:
 
 
 if __name__ == "__main__":
-  countries_to_get = ["Canada", "Wakanda", "Germany", "Iceland", "Pakistan", "Singapore", "South Africa"]
+  countries_to_get = ["", "Canada", "Wakanda", "Germany", "Iceland", "Pakistan", "Singapore", "South Africa"]
 
   with O2GetPrice() as o2:
     for country in countries_to_get:
