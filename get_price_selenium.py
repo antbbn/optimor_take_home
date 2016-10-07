@@ -41,6 +41,10 @@ class O2GetPrice:
   def get_standard_prices(self,country):
     # We first write the country in the textarea
     try:
+      # need to address this here since the empty string causes the form to
+      # return the prices for Abkhazia
+      if country.strip() == "":
+      	raise Exception("Empty country")
       inputarea = self.browser.find_element_by_id('countryName')  
       inputarea.clear()
       inputarea.send_keys(country+'\n') # the '\n' ensures that a request is sent
